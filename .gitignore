@@ -1,0 +1,15 @@
+# Folders
+images/
+converted_images/
+config/
+.idea/
+__pycache__/
+
+# File extensions
+*.jpg
+
+# Environments
+.env
+.venv
+env/
+venv/
