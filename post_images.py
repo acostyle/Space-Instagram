@@ -29,11 +29,14 @@ def post_images(username, password):
 
     try:
         for image in converted_images.iterdir():
-            pic_name = image.stem
-            print(f'Uploading: {pic_name}')
-
-            bot.upload_photo(image, caption=pic_name)
+            try:
+                pic_name = image.stem
+                print(f'Uploading: {pic_name}')
+                bot.upload_photo(image, caption=pic_name)
+            finally:
+                continue
     finally:
         for image in converted_images.iterdir():
-            image.unlink()
-            converted_images.rmdir()
+            image.unlink()  
+    
+    converted_images.rmdir()
