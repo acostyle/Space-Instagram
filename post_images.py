@@ -27,16 +27,12 @@ def post_images(username, password):
 
     converted_images = Path.cwd().joinpath('converted_images')
 
-    try:
-        for image in converted_images.iterdir():
-            try:
-                pic_name = image.stem
-                print(f'Uploading: {pic_name}')
-                bot.upload_photo(image, caption=pic_name)
-            finally:
-                continue
-    finally:
-        for image in converted_images.iterdir():
-            image.unlink()  
-    
+    for image in converted_images.iterdir():
+        try:
+            pic_name = image.stem
+            print(f'Uploading: {pic_name}')
+            bot.upload_photo(image, caption=pic_name)
+        finally:
+            image.unlink()
+
     converted_images.rmdir()
